@@ -9,23 +9,7 @@ images.forEach(image => {
 })
 
 // Tags displayed with hyphens
-const tags = document.querySelectorAll('.tag')
+const tags = document.querySelectorAll('.post-tag')
 tags.forEach(tag => {
     tag.textContent = tag.textContent.replaceAll(' ', '-')
 })
-
-// Navigation menu
-let menuOpen = false
-const navToggle = document.querySelector('.menu-link')
-const menuState = document.querySelector('.menu-state')
-const navMenu = document.querySelector('nav')
-const numberOfNavLinks = document.querySelectorAll('nav ul > li').length
-navToggle.onclick = () => {
-    menuOpen = !menuOpen
-    menuState.textContent = menuOpen ? '-' : '+'
-    if (menuOpen) {
-        navMenu.style.maxHeight = `calc(var(--line-height) * ${3 + numberOfNavLinks})`
-    } else {
-        navMenu.style.maxHeight = '0'
-    }
-}

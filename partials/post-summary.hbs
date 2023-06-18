@@ -4,7 +4,7 @@
         {{#if primary_tag}}
         {{#primary_tag}}
         <p class="secondary">
-            <a href="{{url}}" class="tag primary-tag quiet-link secondary">{{name}}</a>
+            <a href="{{url}}" class="post-tag primary-tag quiet-link secondary">{{name}}</a>
         </p>
         {{/primary_tag}}
         {{/if}}
@@ -12,19 +12,29 @@
     
 
     {{#if feature_image}}
-    <p>{{excerpt words="36"}}... <span class="no-break"><a href="{{url}}">continue reading</a></span></p>
+    <a href="{{url}}">
+        <img class="post-card-image kg-width-full"
+            srcset="{{img_url feature_image size="s"}} 300w,
+                    {{img_url feature_image size="m"}} 600w,
+                    {{img_url feature_image size="l"}} 1000w,
+                    {{img_url feature_image size="xl"}} 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="{{img_url feature_image size="m"}}"
+            alt="[{{title}}]"
+        />
+    </a>
+    <p>{{excerpt words="36"}}...</p>
     {{else}}
-    <p>{{excerpt words="44"}}... <span class="no-break"><a href="{{url}}">continue reading</a></span></p>
+    <p>{{excerpt words="44"}}...</p>
     {{/if}}
 
-    <p class="secondary">
-        <span class="authors">
-            {{#foreach authors}}
-            <a href="{{url}}" class="author quiet-link">{{name}}</a>
-            {{/foreach}}
-        </span>
-        <span class="publish-date">
+    <p class="post-meta">
+        <span class="publish-date secondary">
             <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD/MM/YYYY"}}</time>
+        </span>
+        <span class="no-break">
+            <a href="{{url}}">read more</a>
         </span>
     </p>
 </article>

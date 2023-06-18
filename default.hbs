@@ -7,40 +7,26 @@
     <meta name="HandheldFriendly" content="True" />
     <link rel="stylesheet" type="text/css" href="{{asset "css/nord.css"}}">
     <link rel="stylesheet" type="text/css" href="{{asset "css/main.css"}}">
-    <noscript>
-        <style>
-            nav {
-                max-height: initial;
-            }
-            .menu-link {
-                display: none;
-            }
-        </style>
-    </noscript>
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism.css"}}" />
     {{ghost_head}}
 </head>
 <body class="{{body_class}}">
     <div class="terminal bordered">
-        <h1><a href="/" class="quiet-link">{{@site.title}}</a></h1>
-        <p class="secondary">
-            <span>{{@site.description}}</span>
-            {{#if @site.navigation}}
-            <span class="secondary"><a class="menu-link">[<span class="menu-state">+</span>] Menu</a></span>
-            {{/if}}
-        </p>
+        <header>
+            <h1 class="site-title"><a href="/" class="quiet-link">{{@site.title}}</a></h1>
+            <span class="secondary">{{@site.description}}</span>
 
-        {{#if @site.navigation}}
-        <nav>
+            <nav>
+                {{ navigation }}
+            </nav>
+
             <hr>
-            {{navigation}}
-        </nav>
-        {{/if}}
-
-        <hr>
+        </header>
 
         {{{body}}}
     </div>
     {{ghost_foot}}
+    <script src="{{asset "js/prism.js"}}"></script>  
     <script src="{{asset "js/script.js"}}"></script>
 </body>
 </html>
